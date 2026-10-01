@@ -1,0 +1,4 @@
+torch>=2.8
+transformers>=4.56
+safetensors
+bitsandbytes>=0.47

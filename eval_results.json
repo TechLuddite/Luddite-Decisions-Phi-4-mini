@@ -1,0 +1,90 @@
+{
+ "model": "workshop/models/Phi-4-mini-instruct",
+ "adapter": "data/s1/runs/s1-phi-4-mini/adapter",
+ "quant": "bf16",
+ "temperature": 1.1,
+ "readout": "letters",
+ "gpu_weights_gb": 7.87,
+ "sets": {
+  "eval_bench_v1": {
+   "n": 600,
+   "accuracy": 0.865,
+   "chance": 0.2444,
+   "nll": 0.3711,
+   "ece": 0.0649,
+   "mean_confidence": 0.9275,
+   "letter_consistency": 0.9333,
+   "by_family": {
+    "count_seen": 0.96,
+    "cover": 0.827,
+    "exit_for_quest": 0.533,
+    "fits": 1.0,
+    "heal": 0.787,
+    "nearest_threat": 1.0,
+    "value_per_cell": 0.96,
+    "weapon": 0.853
+   }
+  },
+  "eval_synth_heldout": {
+   "n": 600,
+   "accuracy": 0.6017,
+   "chance": 0.25,
+   "nll": 1.6485,
+   "ece": 0.2639,
+   "mean_confidence": 0.8656,
+   "letter_consistency": 0.8967,
+   "by_family": {
+    "except_category": 1.0,
+    "multi_hop": 0.203
+   }
+  },
+  "eval_synth_indist": {
+   "n": 640,
+   "accuracy": 0.9672,
+   "chance": 0.2509,
+   "nll": 0.0928,
+   "ece": 0.013,
+   "mean_confidence": 0.977,
+   "letter_consistency": 0.9766,
+   "by_family": {
+    "arithmetic": 0.8,
+    "category_rule": 1.0,
+    "compare_two": 1.0,
+    "count_condition": 0.925,
+    "direction": 1.0,
+    "extreme": 1.0,
+    "filtered_extreme": 0.925,
+    "fit_capacity": 1.0,
+    "intent": 1.0,
+    "list_difference": 1.0,
+    "lookup": 1.0,
+    "rank_position": 0.875,
+    "ratio_best": 0.975,
+    "rule_policy": 1.0,
+    "times": 1.0,
+    "yes_no": 0.975
+   }
+  },
+  "eval_csqa": {
+   "n": 1221,
+   "accuracy": 0.8313,
+   "chance": 0.2,
+   "nll": 0.4511,
+   "ece": 0.0256,
+   "mean_confidence": 0.8188,
+   "letter_consistency": 0.9034,
+   "by_family": {
+    "commonsense_qa": 0.831
+   }
+  },
+  "eval_mmlu": {
+   "n": 1425,
+   "accuracy": 0.6575,
+   "chance": 0.25,
+   "nll": 0.9805,
+   "ece": 0.0959,
+   "mean_confidence": 0.7535
+  }
+ },
+ "minutes": 3.2
+}

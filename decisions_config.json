@@ -1,0 +1,7 @@
+{
+ "format_version": 1,
+ "temperature": 1.1,
+ "letters": "ABCDEFGHIJ",
+ "base_model": "Phi-4-mini-instruct",
+ "readout": "letters: softmax over the next-token logits of ' A'..' J' after 'Answer:'"
+}
