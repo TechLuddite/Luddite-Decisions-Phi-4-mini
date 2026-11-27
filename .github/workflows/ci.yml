@@ -1,0 +1,41 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # The repository checks in tests/test_repo.py: JSON files parse, Python files
+  # compile, and weights.sha256 agrees with the index file and its shards.
+  # Standard library only. No weights are downloaded and the model is not run.
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: python3 -B -m unittest discover -s tests -v
+
+  # Luddite Scout reads the checkout: agent instruction files, hidden Unicode,
+  # Actions, dependencies and build-time code. It runs nothing from this
+  # repository. Fails on any HIGH or MEDIUM finding and on a check that could
+  # not finish.
+  scout:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: TechLuddite/luddite-scout-action@b34b6a811b70e99c51a8e9b1f4a1aeecc786d99d
+        with:
+          fail-on: medium
+          name: ${{ github.repository }}
+          commit: ${{ github.event.pull_request.head.sha || github.sha }}
