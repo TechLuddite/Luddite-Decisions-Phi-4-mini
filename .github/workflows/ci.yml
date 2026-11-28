@@ -34,7 +34,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - uses: TechLuddite/luddite-scout-action@b34b6a811b70e99c51a8e9b1f4a1aeecc786d99d
+      - uses: TechLuddite/luddite-scout-action@b7facbff988fbd46a1488d84af92c7bc291abe1b
         with:
           fail-on: medium
           name: ${{ github.repository }}
